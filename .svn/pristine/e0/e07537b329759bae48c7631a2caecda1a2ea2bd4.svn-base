@@ -1,0 +1,32 @@
+import java.util.*;
+
+class GameData {
+	private Unit[] myUnits;
+	private Unit[] enemyUnits;
+	private int[][] resources;
+	
+	private int playerId;
+	private int metal;
+	
+	public GameData() {
+		
+	}
+	
+	public Unit[] getMyUnits() {
+		return myUnits;
+	}
+	
+	public Unit[] getEnemyUnits() {
+		return enemyUnits;
+	}
+	
+	public int getId() {
+		return playerId;
+	}
+	
+	public int getMetal() {
+		return metal;
+	}
+	
+	
+}

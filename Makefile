@@ -1,0 +1,19 @@
+COMPILER := javac
+SOURCES := $(wildcard src/*.java)
+OBJECTS := $(SOURCES:src/%.java=obj/%.class)
+LIBS := -classpath '.:src/:libs/gson-2.1.jar'
+EXECUTABLE := server.jar
+
+all: $(SOURCES) $(EXECUTABLE)
+
+$(EXECUTABLE): $(OBJECTS)
+	cd obj && jar cfm ../$(EXECUTABLE) ../Manifest.txt *
+
+.SECONDEXPANSION:
+$(OBJECTS) : $$(patsubst obj/%.class,src/%.java,$$@)
+	$(COMPILER) $(LIBS) $< -d obj/ -s src/
+
+.PHONY:
+clean:
+	rm -f obj/*.class
+	rm server.jar
